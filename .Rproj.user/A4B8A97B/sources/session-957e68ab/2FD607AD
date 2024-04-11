@@ -1,0 +1,28 @@
+{
+    "id": "2FD607AD",
+    "path": "~/Documents/Projects/Grants and Conferences/snh2024/snh2024/setup.Rmd",
+    "project_path": "setup.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1712864379277.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "11,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1712864448,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1712864448910,
+    "read_only": false,
+    "read_only_alternatives": []
+}
