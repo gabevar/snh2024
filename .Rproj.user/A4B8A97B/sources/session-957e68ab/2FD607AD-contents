@@ -4,8 +4,18 @@ output: html_notebook
 ---
 
 ```{r}
-library(renv)
+require(tidyverse)
+require(devtools)
+install_github("Tom-Wolff/ideanet", ref = "main")
+```
 
-init()
+```{r}
+lakers %>% 
+```
+
+
+
+```{r}
+renv::snapshot()
 ```
 

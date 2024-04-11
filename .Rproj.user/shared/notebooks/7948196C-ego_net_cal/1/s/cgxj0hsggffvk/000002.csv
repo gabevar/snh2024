@@ -1,0 +1,6 @@
+"0","```r
+library(devtools)
+install_github(\"Tom-Wolff/ideanet\", ref = \"main\")
+library(ideanet)
+library(dplyr)
+```"

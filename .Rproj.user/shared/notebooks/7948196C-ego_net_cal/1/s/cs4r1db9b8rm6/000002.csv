@@ -1,0 +1,5 @@
+"0","```r
+ego_netwrite(egos = ego_df, ego_id = \"egoid\",
+             alters = ties, alter_id = \"alterid\", alter_ego = \"egoid\",
+             alter_alter = alter_alter_df, aa_ego = \"egoid\", i_elements = \"alterid_from\", j_elements = \"alterid_to\")
+```"
