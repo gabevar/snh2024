@@ -1,4 +1,0 @@
-library(ideanet)
-library(ergm)
-library(egor)
-

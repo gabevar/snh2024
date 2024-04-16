@@ -200,20 +200,6 @@
       ],
       "Hash": "df49e3306f232ec28f1604e36a202847"
     },
-    "Rdpack": {
-      "Package": "Rdpack",
-      "Version": "2.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "methods",
-        "rbibutils",
-        "tools",
-        "utils"
-      ],
-      "Hash": "3e1384ada5d3948b392e98b11434d972"
-    },
     "abind": {
       "Package": "abind",
       "Version": "1.4-5",
@@ -523,35 +509,6 @@
       ],
       "Hash": "4aa52573ccedf7dc635a0eb471944a36"
     },
-    "ergm": {
-      "Package": "ergm",
-      "Version": "4.6.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "MASS",
-        "Matrix",
-        "R",
-        "Rdpack",
-        "coda",
-        "knitr",
-        "lpSolveAPI",
-        "magrittr",
-        "memoise",
-        "methods",
-        "network",
-        "parallel",
-        "purrr",
-        "rlang",
-        "rle",
-        "robustbase",
-        "statnet.common",
-        "stringr",
-        "tibble",
-        "trust"
-      ],
-      "Hash": "aee1ba632c48b2e4004302a800c301dc"
-    },
     "evaluate": {
       "Package": "evaluate",
       "Version": "0.23",
@@ -721,6 +678,18 @@
         "utils"
       ],
       "Hash": "7d7f283939f563670a697165b2cf5560"
+    },
+    "gridGraphics": {
+      "Package": "gridGraphics",
+      "Version": "0.5-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "grDevices",
+        "graphics",
+        "grid"
+      ],
+      "Hash": "5b79228594f02385d4df4979284879ae"
     },
     "gtable": {
       "Package": "gtable",
@@ -1122,13 +1091,6 @@
       ],
       "Hash": "277a722ee5b6ad2926a0594d0ee82694"
     },
-    "lpSolveAPI": {
-      "Package": "lpSolveAPI",
-      "Version": "5.5.2.0-17.11",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "b062307fdfd15573643dbcb08948178c"
-    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "2.0.3",
@@ -1524,18 +1486,6 @@
       ],
       "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
     },
-    "rbibutils": {
-      "Package": "rbibutils",
-      "Version": "2.2.16",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "tools",
-        "utils"
-      ],
-      "Hash": "8c06968e0a5b0209c5f34239b1302336"
-    },
     "readxl": {
       "Package": "readxl",
       "Version": "1.4.3",
@@ -1591,17 +1541,6 @@
         "utils"
       ],
       "Hash": "42548638fae05fd9a9b5f3f437fbbbe2"
-    },
-    "rle": {
-      "Package": "rle",
-      "Version": "0.9.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "methods"
-      ],
-      "Hash": "f84d8f430c496bb5c6769fed95705562"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
@@ -1970,17 +1909,6 @@
         "xfun"
       ],
       "Hash": "be7a76845222ad20adb761f462eed3ea"
-    },
-    "trust": {
-      "Package": "trust",
-      "Version": "0.1-8",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "stats"
-      ],
-      "Hash": "f50614d2145ba1012b62ff75f2129d5b"
     },
     "utf8": {
       "Package": "utf8",
