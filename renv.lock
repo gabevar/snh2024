@@ -175,9 +175,9 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.12.8.2.0",
+      "Version": "0.12.8.2.1",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "Rcpp",
@@ -185,7 +185,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "85c0c4491c06db4814ed7e39b960973c"
+      "Hash": "d5448fb24fb114c4da1275a37a571f37"
     },
     "RcppEigen": {
       "Package": "RcppEigen",
@@ -679,18 +679,6 @@
       ],
       "Hash": "7d7f283939f563670a697165b2cf5560"
     },
-    "gridGraphics": {
-      "Package": "gridGraphics",
-      "Version": "0.5-1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "grDevices",
-        "graphics",
-        "grid"
-      ],
-      "Hash": "5b79228594f02385d4df4979284879ae"
-    },
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.4",
@@ -813,10 +801,10 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "Tom-Wolff",
       "RemoteRepo": "ideanet",
-      "RemoteRef": "main",
-      "RemoteSha": "65e47e30bc261be0304466bbf6a205d0553764c8",
+      "RemoteUsername": "Tom-Wolff",
+      "RemoteRef": "vignette_fixes",
+      "RemoteSha": "f3d524c9a66d26a02857900cff9396bf554dfa5f",
       "Requirements": [
         "CliquePercolation",
         "MASS",
@@ -848,7 +836,7 @@
         "tidyr",
         "tidyselect"
       ],
-      "Hash": "b2d8287ec29851968682f42aa215a0ab"
+      "Hash": "37ece763dac577f6dfbb9f566c450b15"
     },
     "igraph": {
       "Package": "igraph",
