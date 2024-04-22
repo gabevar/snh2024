@@ -1,11 +1,4 @@
-"0","ideanetViz()
-"
-"2","Registered S3 methods overwritten by 'htmltools':
-  method               from         
-  print.html           tools:rstudio
-  print.shiny.tag      tools:rstudio
-  print.shiny.tag.list tools:rstudio
-"
+"0","ideanetViz()"
 "2","Registered S3 method overwritten by 'htmlwidgets':
   method           from         
   print.htmlwidget tools:rstudio
@@ -28,7 +21,7 @@ Since you have a suitable version of DT (>= v0.32.1), shiny::dataTableOutput() w
 If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
 See <https://rstudio.github.io/DT/shiny.html> for more information."
 "2","
-Listening on http://127.0.0.1:4675
+Listening on http://127.0.0.1:5394
 "
 "2","`shiny::renderDataTable()` is deprecated as of shiny 1.8.1.
 Please use `DT::renderDT()` instead.
@@ -65,24 +58,6 @@ See <https://rstudio.github.io/DT/shiny.html> for more information.
 "1","[1]"
 "1"," ""started netwrite 3"""
 "1","
-"
-"2","Processing network for edge type mfnid
-"
-"2","Warning: (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output."
-"2","Warning: (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output."
-"2","Warning: (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
-"
-"2","Warning: At vendor/cigraph/src/misc/motifs.c:1140 : Triad census called on an undirected graph. All connections will be treated as mutual."
-"2","Warning: Eigenvector centralization calculated only for largest weak component."
-"2","Processing network for edge type ffnid
-"
-"2","Warning: (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output."
-"2","Warning: (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output."
-"2","Warning: (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
-"
-"2","Warning: At vendor/cigraph/src/misc/motifs.c:1140 : Triad census called on an undirected graph. All connections will be treated as mutual."
-"2","Warning: Eigenvector centralization calculated only for largest weak component."
-"2","Processing aggregate network of all edge types
 "
 "2","Warning: At vendor/cigraph/src/misc/motifs.c:1140 : Triad census called on an undirected graph. All connections will be treated as mutual."
 "1","[1]"

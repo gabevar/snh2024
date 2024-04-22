@@ -1,0 +1,174 @@
+"0","ideanetViz()"
+"2","`shiny::dataTableOutput()` is deprecated as of shiny 1.8.1.
+Please use `DT::DTOutput()` instead.
+Since you have a suitable version of DT (>= v0.32.1), shiny::dataTableOutput() will automatically use DT::DTOutput() under-the-hood.
+If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
+See <https://rstudio.github.io/DT/shiny.html> for more information."
+"2","`shiny::dataTableOutput()` is deprecated as of shiny 1.8.1.
+Please use `DT::DTOutput()` instead.
+Since you have a suitable version of DT (>= v0.32.1), shiny::dataTableOutput() will automatically use DT::DTOutput() under-the-hood.
+If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
+See <https://rstudio.github.io/DT/shiny.html> for more information."
+"2","`shiny::dataTableOutput()` is deprecated as of shiny 1.8.1.
+Please use `DT::DTOutput()` instead.
+Since you have a suitable version of DT (>= v0.32.1), shiny::dataTableOutput() will automatically use DT::DTOutput() under-the-hood.
+If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
+See <https://rstudio.github.io/DT/shiny.html> for more information."
+"2","
+Listening on http://127.0.0.1:6333
+"
+"2","`shiny::renderDataTable()` is deprecated as of shiny 1.8.1.
+Please use `DT::renderDT()` instead.
+Since you have a suitable version of DT (>= v0.32.1), shiny::renderDataTable() will automatically use DT::renderDT() under-the-hood.
+If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
+See <https://rstudio.github.io/DT/shiny.html> for more information.
+"
+"2","`shiny::renderDataTable()` is deprecated as of shiny 1.8.1.
+Please use `DT::renderDT()` instead.
+Since you have a suitable version of DT (>= v0.32.1), shiny::renderDataTable() will automatically use DT::renderDT() under-the-hood.
+If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
+See <https://rstudio.github.io/DT/shiny.html> for more information.
+"
+"2","`shiny::renderDataTable()` is deprecated as of shiny 1.8.1.
+Please use `DT::renderDT()` instead.
+Since you have a suitable version of DT (>= v0.32.1), shiny::renderDataTable() will automatically use DT::renderDT() under-the-hood.
+If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
+See <https://rstudio.github.io/DT/shiny.html> for more information.
+"
+"2","`shiny::renderDataTable()` is deprecated as of shiny 1.8.1.
+Please use `DT::renderDT()` instead.
+Since you have a suitable version of DT (>= v0.32.1), shiny::renderDataTable() will automatically use DT::renderDT() under-the-hood.
+If this happens to break your app, set `options(shiny.legacy.datatable = TRUE)` to get the legacy datatable implementation (or `FALSE` to squelch this message).
+See <https://rstudio.github.io/DT/shiny.html> for more information.
+"
+"1","[1]"
+"1"," ""observe event edges"""
+"1","
+"
+"1","[1]"
+"1"," ""observe event edges"""
+"1","
+"
+"1","[1]"
+"1"," ""started netwrite 3"""
+"1","
+"
+"2","Warning: At vendor/cigraph/src/misc/motifs.c:1140 : Triad census called on an undirected graph. All connections will be treated as mutual."
+"1","[1]"
+"1"," ""processed netwrite"""
+"1","
+"
+"1","[1]"
+"1"," FALSE"
+"1","
+"
+"1","NULL
+"
+"1","[1]"
+"1"," ""started community detection"""
+"1","
+"
+"2","Warning: Error in communities: unused argument (shiny = TRUE)"
+"2","  103: [37mdplyr::select[39m
+"
+"2",""
+"2","  102: [37mdplyr::select[39m
+"
+"2",""
+"2","  101: [37mis.data.frame[39m
+"
+"2",""
+"2","  100: [37mcolnames[39m
+"
+"2",""
+"2","   98: [34m[1mrenderUI [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#767][22m[39m
+"
+"2",""
+"2","   97: [37mfunc[39m
+"
+"2",""
+"2","   84: [37mrenderFunc[39m
+"
+"2",""
+"2","   83: [37moutput$community_detection[39m
+"
+"2",""
+"2","    2: [37mshiny::runApp[39m
+"
+"2",""
+"2","    1: [37mideanetViz[39m
+"
+"2","  237: [37m<Anonymous>[39m
+"
+"2",""
+"2","  236: [37mstop[39m
+"
+"2",""
+"2","  235: [37mnodelist3[39m
+"
+"2",""
+"2","  234: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#705][22m[39m
+"
+"2",""
+"2","  218: [37mnet1[39m
+"
+"2",""
+"2","  217: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#732][22m[39m
+"
+"2",""
+"2","  201: [37mnet2[39m
+"
+"2",""
+"2","  200: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#777][22m[39m
+"
+"2",""
+"2","  184: [37mnet6[39m
+"
+"2",""
+"2","  183: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#937][22m[39m
+"
+"2",""
+"2","  167: [37mnet3[39m
+"
+"2",""
+"2","  166: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#959][22m[39m
+"
+"2",""
+"2","  150: [37mnet7[39m
+"
+"2",""
+"2","  149: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#983][22m[39m
+"
+"2",""
+"2","  133: [37mnet4[39m
+"
+"2",""
+"2","  132: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#1000][22m[39m
+"
+"2",""
+"2","  116: [37mnet5[39m
+"
+"2",""
+"2","  115: [34m[1m<reactive> [/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/snh2024/renv/library/R-4.3/aarch64-apple-darwin20/ideanet/apps/ideanetViz/app.R#1067][22m[39m
+"
+"2",""
+"2","   99: [37mnet8[39m
+"
+"2",""
+"2","   98: [37mshinyRenderWidget[39m
+"
+"2",""
+"2","   97: [37mfunc[39m
+"
+"2",""
+"2","   84: [37mrenderFunc[39m
+"
+"2",""
+"2","   83: [37moutput$network[39m
+"
+"2",""
+"2","    2: [37mshiny::runApp[39m
+"
+"2",""
+"2","    1: [37mideanetViz[39m
+"
