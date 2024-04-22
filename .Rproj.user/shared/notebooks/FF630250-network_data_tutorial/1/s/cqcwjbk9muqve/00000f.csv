@@ -1,0 +1,16 @@
+"0","nw_flor <- netwrite(nodelist = florentine_nodes,"
+"0","                    node_id = ""id"","
+"0","                    i_elements = florentine_edges$source,"
+"0","                    j_elements = florentine_edges$target,"
+"0","                    type = florentine_edges$type,"
+"0","                    directed = FALSE,"
+"0","                    net_name = ""florentine"")"
+"2","Processing network for edge type marriage
+"
+"2","Processing network for edge type business
+"
+"2","Processing aggregate network of all edge types
+"
+"0","list2env(nw_flor, .GlobalEnv)"
+"1","<environment: R_GlobalEnv>
+"
