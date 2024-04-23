@@ -23,8 +23,9 @@ Let's take a look at an example of an edgelist representing friendship nominatio
 
 ```{r packages, message = FALSE}
 library(dplyr)
-library(igraph)
 library(ideanet)
+library(igraph)
+devtools::install_github("Tom-Wolff/ideanet", ref = "vignette_fixes")
 ```
 
 ```{r faux_edges, eval = FALSE}
@@ -68,7 +69,11 @@ Adjacency matrices for two-mode networks delegate rows to nodes of one mode and 
 
 *Local*, or *egocentric*, networks describe the relationships that exist between a focal ego and its alters. Depending on how these networks are collected, they may also describe relationships that exist between each of the focal ego's alters. Moreover, most egocentric  data contain information describing characteristics of ego and their alters at the individual level. Researchers often collect egocentric data when efforts to capture sociocentric networks are impossible or highly impractical, such as in studies of hard-to-reach populations. 
 
-While sociocentric datasets typically store a single, large network, egocentric data usually contain several smaller networks (hereafter *ego networks*) that may or may not exist in isolation of one another. Many egocentric datasets are organized such that each row corresponds to a single ego, and columns identify each respective ego's alters, these alters' attributes, and (if applicable) whether ties exist between these alters. Data organized in this way are often prohibitively wide and difficult to manage, so we will refrain from showing an example of this format. A more preferable way of formatting egocentric data is to split it into three separate datasets:
+While sociocentric datasets typically store a single, large network, egocentric data usually contain several smaller networks (hereafter *ego networks*) that may or may not exist in isolation of one another. Many egocentric datasets are organized such that each row corresponds to a single ego, and columns identify each respective ego's alters, these alters' attributes, and (if applicable) whether ties exist between these alters.
+
+![](ego_wide.png)
+
+Data organized in this way are often prohibitively wide and difficult to manage, so we will refrain from showing an example of this format. A more preferable way of formatting egocentric data is to split it into three separate datasets:
 
 1. An *ego list* containing information about various qualities and attributes of focal egos for each ego network. Each row in the ego list corresponds to a specific ego, which is given a unique ID number.
 2. An *alter list* in which each row corresponds to a specific alter in an ego network. The first column in the alter list indicates the ego for which a given alter is associated, values for which should match the unique ID numbers contained in the ego list. The second column indicates the given alter; within each ego network, alters are also given a unique ID number. Subsequent columns contain qualities and attributes of alters and/or attributes of the ego's relationship to alter.
