@@ -25,7 +25,6 @@ Let's take a look at an example of an edgelist representing friendship nominatio
 library(dplyr)
 library(ideanet)
 library(igraph)
-devtools::install_github("Tom-Wolff/ideanet", ref = "vignette_fixes")
 ```
 
 ```{r faux_edges, eval = FALSE}

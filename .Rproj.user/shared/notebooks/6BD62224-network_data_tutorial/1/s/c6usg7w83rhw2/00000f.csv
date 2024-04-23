@@ -1,4 +1,4 @@
-"0","devtools::install_github(""Tom-Wolff/ideanet"", ref = ""vignette_fixes"")
+"0","devtools::install_github(""Tom-Wolff/ideanet"", ref = ""main"")
 "
 "1","These packages have more recent versions available.
 It is recommended to update all of them.
@@ -24,16 +24,16 @@ Which would you like to update?"
 "1",""
 "1","
 "
-"1","[36m──[39m [36mR CMD build[39m [36m───────────────────────────────────────────────────────[39m"
+"1","[36m──[39m [36mR CMD build[39m [36m──────────────────────────────────────────────────────────────────────────[39m"
 "1",""
 "1","
 "
 "1","  "
-"1","   checking for file ‘/private/var/folders/gc/d0jzp3hn11l01xn2qz2kt57w0000gp/T/RtmpQOXhqp/remotesab6f7199bbff/Tom-Wolff-ideanet-594688b/DESCRIPTION’ ..."
+"1","   checking for file ‘/private/var/folders/gc/d0jzp3hn11l01xn2qz2kt57w0000gp/T/RtmpOL2STN/remotesb84c5568bb30/Tom-Wolff-ideanet-858fd6c/DESCRIPTION’ ..."
 "1",""
 "1",""
 "1","  "
-"1","[32m✔[39m  [38;5;247mchecking for file ‘/private/var/folders/gc/d0jzp3hn11l01xn2qz2kt57w0000gp/T/RtmpQOXhqp/remotesab6f7199bbff/Tom-Wolff-ideanet-594688b/DESCRIPTION’[39m[36m[39m"
+"1","[32m✔[39m  [38;5;247mchecking for file ‘/private/var/folders/gc/d0jzp3hn11l01xn2qz2kt57w0000gp/T/RtmpOL2STN/remotesb84c5568bb30/Tom-Wolff-ideanet-858fd6c/DESCRIPTION’[39m[36m[39m"
 "1",""
 "1","
 "

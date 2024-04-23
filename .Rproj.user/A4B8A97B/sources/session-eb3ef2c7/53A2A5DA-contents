@@ -1233,8 +1233,8 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "ideanet",
       "RemoteUsername": "Tom-Wolff",
-      "RemoteRef": "main",
-      "RemoteSha": "858fd6c857329fb26d7ca092f38f131ed1e09293",
+      "RemoteRef": "vignette_fixes",
+      "RemoteSha": "f3d524c9a66d26a02857900cff9396bf554dfa5f",
       "Requirements": [
         "CliquePercolation",
         "MASS",
@@ -1266,7 +1266,7 @@
         "tidyr",
         "tidyselect"
       ],
-      "Hash": "1f3941b12b0e623c0109aa945a391a3c"
+      "Hash": "37ece763dac577f6dfbb9f566c450b15"
     },
     "igraph": {
       "Package": "igraph",
