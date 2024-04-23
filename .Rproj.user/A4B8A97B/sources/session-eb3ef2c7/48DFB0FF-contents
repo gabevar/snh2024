@@ -1,0 +1,424 @@
+---
+title: "A Quick Primer on Analyzing Network Data in R"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Introduction
+
+Network data can be stored in several formats, and users working with networks will want to familiarize themselves with each of these formats. Additionally, many software tools exist for reading and analyzing network data. Some of these tools are packages or modules for more comprehensive programming languages, while others are standalone applications. By the end of this tutorial, you should have a basic familiarity with how network data are stored, some of the tools available to work with network data, and how to do some basic analysis tasks for networks using the R programming language.
+
+# Popular Formats for Network Data Storage
+
+## Sociocentric Networks
+
+*Global*, or *sociocentric*, networks capture a full census of actors (typically referred to as *nodes* or *vertices*) and the relationships between them (typically referred to as *ties* or *edges*) in a given context of interest (such as a classroom, hospital, city, etc.). Sociocentric networks are typically stored as either an *edgelist* (and sometimes accompanied by a *nodelist*), an *adjacency matrix*, or (though less frequently) an *adjacency list*.
+
+### Edgelists
+
+One of the most common ways of representing and storing network data is via an edgelist. An *edgelist* is a dataset in which each row represents an edge connecting one node, *i*, to another node, *j*, both of whom are represented by a unique ID number. In a *directed* network, one column represents the sender of a tie while another represents the receiver. If the network is *undirected*, ties between nodes have no direction, and these columns merely represent the two nodes at the ends of a tie. 
+
+Let's take a look at an example of an edgelist representing friendship nominations between students in a high school. This edgelist is stored in the `fauxmesa_edges` object found in the `ideanet` R package:
+
+```{r packages, message = FALSE}
+library(dplyr)
+library(ideanet)
+library(igraph)
+```
+
+```{r faux_edges, eval = FALSE}
+head(fauxmesa_edges)
+```
+
+This edgelist is pretty straightforward, merely indicating the senders and receiver of each friendship tie in the network. Edgelists often feature additional columns containing *dyad-level* information describing properties of each individual edge. Such columns may store edge *weights* quantifying the strength of the tie between ego and alter. They may also indicate the *type* of relationship existing between ego and alter (e.g. friendship, family relations, romantic ties). If a network is *temporal* or *dynamic* -- meaning the network's structure changes over time -- its edgelist will likely contain a column specifying the specific point in time at which each edge in the network is present.
+
+In many cases, an edgelist storing ties will be accompanied by a *nodelist* containing information about various qualities and attributes of individual nodes in the network. Nodelists are often useful when accounting for *isolates*, or nodes that exist in the network without any ties to other nodes. Because each row in an edgelist represents a tie in the network, isolates lacking ties may end up being absent from an edgelist despite appearing in a nodelist.
+
+```{r faux_nodes, echo = FALSE}
+head(fauxmesa_nodes)
+```
+
+
+### Adjacency Matrices
+
+ An *adjacency matrix* is a square matrix in which each row and each column corresponds to an individual node in the network. The value of a given cell in this matrix, [*i*, *j*], indicates the existence of a tie between node *i* and node *j*. Here we provide a quick example of an adjacency matrix, stored in the `triad` object, which represents a network of 9 nodes. Ties between these nodes form all possible triads and motifs that can appear in a directed network.
+
+```{r triad_mat}
+triad
+```
+
+In networks where edges are *unweighted*, adjacency matrices typically store ties that exist as `1` and those that do not exist as `0`. When edges *are* weighted, cells with non-zero values indicate both the existence of the *i*, *j* tie and its strength.
+
+### Adjacency Lists
+
+Although less common nowadays, some scholars store networks as *adjacency lists*. Adjacency lists are "wide" datasets wherein one column represents the unique identifier of a specific node in the network, and subsequent columns provide the unique identifiers of the node's ties. Adjacency lists resemble "stem and leaf" plots you may be familiar with in other contexts.
+
+![](adjlist.png)
+
+### Bipartite (Two-Mode) Networks 
+
+*Bipartite*, or *"two-mode"* networks, contain two distinct types of nodes, and ties can only exist between nodes of different kinds. Ties in two-mode networks may represent relationships between companies and employees, people and events, or authors and scientific papers. 
+
+Like single-mode networks, two-mode networks may be stored in edgelists or adjacency matrices. Edgelists for two-mode networks largely resemble those for single-mode networks; however, nodes in each mode will appear in their own respective column. If given an edgelist in which unique identifiers in one column are mutually exclusive from those in the other, you may be working with a two-mode network.
+
+Adjacency matrices for two-mode networks delegate rows to nodes of one mode and columns to nodes of the other mode. While adjacency matrices for single-mode networks are always square, those for two-mode networks may be rectangular if the number of nodes in one mode is not the same as the number of nodes in the other mode.
+
+## Egocentric Networks
+
+*Local*, or *egocentric*, networks describe the relationships that exist between a focal ego and its alters. Depending on how these networks are collected, they may also describe relationships that exist between each of the focal ego's alters. Moreover, most egocentric  data contain information describing characteristics of ego and their alters at the individual level. Researchers often collect egocentric data when efforts to capture sociocentric networks are impossible or highly impractical, such as in studies of hard-to-reach populations. 
+
+While sociocentric datasets typically store a single, large network, egocentric data usually contain several smaller networks (hereafter *ego networks*) that may or may not exist in isolation of one another. Many egocentric datasets are organized such that each row corresponds to a single ego, and columns identify each respective ego's alters, these alters' attributes, and (if applicable) whether ties exist between these alters.
+
+![](ego_wide.png)
+
+Data organized in this way are often prohibitively wide and difficult to manage, so we will refrain from showing an example of this format. A more preferable way of formatting egocentric data is to split it into three separate datasets:
+
+1. An *ego list* containing information about various qualities and attributes of focal egos for each ego network. Each row in the ego list corresponds to a specific ego, which is given a unique ID number.
+2. An *alter list* in which each row corresponds to a specific alter in an ego network. The first column in the alter list indicates the ego for which a given alter is associated, values for which should match the unique ID numbers contained in the ego list. The second column indicates the given alter; within each ego network, alters are also given a unique ID number. Subsequent columns contain qualities and attributes of alters and/or attributes of the ego's relationship to alter.
+3. (If available) An *alter-alter edgelist* in which each row represents an edge connecting one alter, *i*, to another alter *j*. If multiple types of relationships exist between *i* and *j*, each *i-j-type* combination is given its own row. The first column in this edgelist represents the ego whose network a tie appears in and values for which should match the unique ID numbers contained in the ego list. The next two columns represent the alters connected by a given tie and values for which should be unique ID numbers contained in the alter list. Any other columns contain attributes of the relationship between the two alters.
+
+To familiarize ourselves with this data structure, we'll examine an example ego list, alter list, and alter-alter edgelist native to the `ideanet` package. These data are a simplified subset of ego networks collected in an online study using a *name generator question* (NGQ), a survey item designed to capture a respondent's personal ties:
+
+
+```{r ngq_egos}
+head(ngq_egos)
+```
+
+The ego list contains information for the 60 egos in our dataset. The ego list also has information regarding the age, sex, race/ethnicity, educational attainment, and political leanings of each ego.
+
+```{r ngq_alters}
+head(ngq_alters)
+```
+
+Just as described, the first column in the alter list is the ID number of the ego corresponding to each alter; the second column is the unique ID number for each alter within each ego network. In addition to information regarding the sex and race/ethnicity of each alter, this alter list contains dyadic data about the relationship between ego and alter. family, friend, and other_rel indicate whether an ego identified an alter as a family member, a friend, or another kind of relationship respectively. Further, the face, phone, and text columns indicate how frequently an ego reported communicating with an alter face-to-face, via telephone, or via text.
+
+```{r ngq_aa}
+head(ngq_aa)
+```
+
+The first column in the alter-alter edgelist is the ID number of the corresponding ego, with the following two columns indicating the two alters connected by an edge within the ego’s network. The edgelist also contains a type variable indicating the type of relationship that exists between each pair of alters ("friends", “"related", "other_rel"), and an additional variable indicating how frequently alters talk to one another.
+
+# Tools for Analyzing Network Data
+
+Many software tools exist for reading and analyzing network data. Some of these tools are packages or modules for more comprehensive programming languages, while others are standalone applications.
+
+## Standalone Applications
+
+[UCINet](http://www.analytictech.com/archive/ucinet.htm) is a Windows-only application designed to read network data in a wide variety of formats. UCINet includes methods for calculating centrality measures, community detection, role analysis, and matrix analysis. However, the application can only be accessed for free on a trial basis, after which one must pay a licensing fee for use. 
+
+[Pajek](http://mrvar.fdv.uni-lj.si/pajek/) is a free application that, like UCINet, is Windows-only. Pajek is especially capable in handling large networks and includes tools for network measurement and visualization.
+
+[Gephi](https://gephi.org/) is a free network analysis tool for Windows, Mac OS, and Linux. While Gephi is generally used for network visualization, it offer a limited set of measurement features as well.
+
+## R packages
+
+In addition to standalone applications, a variety of R packages for network analysis are freely available and open source. Most R users working with sociocentric data use some combination of the `igraph` package and the `statnet` suite of packages (which include `network`, `sna`, `ergm`, and more). `egor` a fairly new package, is especially convenient for working with egocentric data.
+
+White the `statnet` suite excels in performing advanced network analysis methods, many users find `igraph` more intuitively accessible. Consequently, the rest of this tutorial will focus on how to use `igraph` to perform basic tasks such as creating an `igraph` object, calculating node-level centrality measures, measuring network-level density and clustering, and basic visualization. 
+
+# Basic Network Analysis and Measures in `igraph`
+
+For these examples, we'll be using the high school nodelist and edgelist data we looked at earlier.
+
+## Creating an `igraph` object
+
+```{r igraph_setup}
+# From an edgelist
+fauxmesa_igraph <- graph_from_data_frame(
+  # The `d` argument here specifies the data frame containing the edgelist
+  d = fauxmesa_edges, 
+  # `vertices` specifies the nodelist data frame (if applicable)
+  vertices = fauxmesa_nodes, 
+  # `directed` specifies whether the network is directed or undirected
+  directed = TRUE)
+
+# From an adjacency matrix
+triad_igraph <- graph_from_adjacency_matrix(
+  # `adjmatrix` specifies the adjacency matrix
+  adjmatrix = triad,
+  # `mode` specifies whether `igraph` should treat the matrix as directed or undirected
+  mode = "directed")
+```
+
+
+## Centrality measures
+
+*Centrality* measures are among the most common node-level metrics used in social network analysis. One can use centrality measures to represent a node's prominence, visibility, power, or status in network, the meaning of which will depend on the specific social context illustrated by the network.
+
+### Degree Centrality
+
+A node's *indegree* is the number of edges received by that node.
+
+```{r indegree}
+# Indegree
+faux_indegree <- degree(fauxmesa_igraph, mode = "in")
+head(faux_indegree)
+```
+
+A node's *outdegree* is the number of edges sent by that node.
+
+```{r outdegree}
+# Outdegree
+faux_outdegree <- degree(fauxmesa_igraph, mode = "out")
+head(faux_outdegree)
+```
+
+A node's *total degree* is the total number of edges connected to that node.
+
+```{r total_degree}
+# Total degree
+faux_total_degree <- degree(fauxmesa_igraph, mode = "total")
+head(faux_total_degree)
+```
+
+### Betweenness Centrality
+
+*Betweenness centrality* measures the extent to which a vertex lies on paths between other vertices. 
+
+```{r betweenness}
+faux_betweenness <- betweenness(fauxmesa_igraph, directed = TRUE)
+head(faux_betweenness)
+```
+
+
+### Closeness Centrality
+
+*Closeness centrality* measures the average distance from a node to all other nodes in the network.
+
+```{r closeness}
+faux_closeness <- closeness(fauxmesa_igraph)
+head(faux_closeness)
+```
+
+
+### Eigenvector Centrality
+
+*Eigenvector centrality* measures the extent to which a node is connected to nodes who are themselves highly connected.
+
+```{r eigen}
+faux_eigen <- eigen_centrality(fauxmesa_igraph, directed = FALSE)$vector
+# Will return a list, the node-level centrality measures are in the `vector` item in this list
+# Here we tread as undirected because directed edges lead to issues in calculation
+head(faux_eigen)
+```
+
+It often helps to collect various centrality measures into a single dataframe for quick access and comparison:
+
+```{r cent_df}
+centrality_df <- data.frame(indegree = faux_indegree, 
+                            outdegree = faux_outdegree, 
+                            total_degree = faux_total_degree,
+                            betweenness = faux_betweenness,
+                            eigen = faux_eigen)
+
+# Get correlation
+cor(centrality_df$indegree, centrality_df$eigen)
+```
+
+## Network-Level Measures
+
+### Density
+
+*Density* is the number of edges appearing in a network divided by the total number of edges that could possibly exist in that network given its size (number of nodes).
+
+```{r density}
+faux_density <- edge_density(fauxmesa_igraph)
+faux_density
+```
+
+## Clustering
+
+*Transitivity* measures the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the *global clustering coefficient*.
+
+```{r clustering}
+faux_clust <- transitivity(fauxmesa_igraph, type = "global")
+faux_clust
+```
+
+## Visualization
+
+`igraph` objects are quite adaptable to visualization; however, plotting `igraph` objects involves a variety of arguments that one must familiarize themselves with. The below example shows the typical set of arguments needing specification to produce a successful visualization.
+
+```{r igraph_plot}
+plot(# `igraph` object
+     fauxmesa_igraph,
+     # Removing vertex labels to keep things legible for large networks
+     vertex.label = NA,
+     # Change node size
+     vertex.size = 4,
+     # Change edge arrow size
+     edge.arrow.size = .1,
+     # Color nodes by a stored attribute in the `igraph` object
+     vertex.color = as.factor(V(fauxmesa_igraph)$grade))
+```
+
+# Streamlining Using `ideanet`
+
+Network analysis in R can be arduous and time-consuming for beginners because necessary tools often span multiple packages. The `ideanet` package aims to simplify learning and performing network analysis in R by streamlining many common methods used by scholars. The `ideanet` package, as part of the broader IDEANet project, is supported by the National Science Foundation as part of the Human Networks and Data Science - Infrastructure program (BCS-2024271 and BCS-2140024). 
+
+### Sociocentric Data Processing and Analysis
+
+`ideanet`'s `netwrite` function generates an extensive set of measures and summaries for the same network in one go. `netwrite` asks users to specify several arguments pertaining to node-level input data, edge-level input data, and function outputs. In order to familiarize ourselves with this function, we list these arguments below, organized by category.
+
+*Edge-Level Arguments*
+
+-   `data_type`: Specifies the data format of the input data. This argument accepts three different values -- `"edgelist"`, `"adjacency_list"`, and `"adjacency_matrix"` -- each of which correspond to popular formats for storing relational data (we'll cover adjacency matrices later in this vignette).
+-   `i_elements`: A vector of "ego" ids. For directed networks, this argument specifies which nodes serve as the source of directed edges.
+-   `j_elements`: A vector of "alter" ids. For directed networks, this argument specifies which nodes serve as the target or destination of directed edges.
+-   `weights`: Vector of edge weights, typically used to signify the strength of edges between nodes. If not specified, `netwrite` will assume that all edges are unweighted and assign them an equal values of `1`. Note that `netwrite` requires that all edge weights be greater than zero.
+-   `weight_type`: If `weights` is specified, this argument determines how `netwrite` should interpret edge weight values. Possible arguments are: `"frequency"` and `"distance"`.
+-   `missing_code`: A single numeric value indicating a missing tie -- in cases where the edge information contains both missing and existing ties. Missing codes often appear in edgelists for which there is not a corresponding nodelist; here missing codes are used to include nodes that are network isolates.
+-   `directed`: Specify if the edges should be interpreted as directed or undirected. Expects a `TRUE` or `FALSE` logical.
+-   `type`: When working with multiple relation types, a numeric or character vector indicating the types of relationships represented in the edgelist.
+
+*Node-Level Arguments*
+
+-   `nodelist`: Depending on the amount of information available to the user, one can specify this argument as either a vector of unique node identifiers *or* a data frame containing a full nodelist.
+-   `node_id`: If a data frame is given for the `nodelist` argument, this argument should be set to a single character value indicating the name of the column in the nodelist containing unique node identifiers.
+
+*Output Arguments*
+
+-   `output`: `netwrite` produces a set of outputs pertaining to different aspects of network analysis. While `netwrite` produces all possible outputs by default, users may want only a subset of these outputs in order to minimize clutter. The `output` argument takes a character vector specifying which outputs should be created. Possible arguments are: `"graph"`, `"largest_bi_component"`, `"largest_component"`, `"node_measure_plot"`, `"nodelist"`, `"edgelist"`, `"system_level_measures"`, and `"system_measure_plot"`.
+-   `net_name`: A character value indicating the name that exported `igraph` objects should be given.
+-   `message`: Silences messages and warnings. Expects `TRUE` or `FALSE` logical.
+-   `shiny`: A logical value indicating whether `netwrite` is being used in conjunction with \code{ideanetViz}. `shiny` should also be set to `TRUE` when using `ideanet` in an R Markdown file that users expect to knit into a document.
+
+Let's apply `netwrite` to the high school nodelist and edgelist we examined earlier:
+
+```{r nw_faux, warning = FALSE}
+nw_fauxmesa <- netwrite(nodelist = fauxmesa_nodes,
+                      node_id = "id",
+                      i_elements = fauxmesa_edges$from,
+                      j_elements = fauxmesa_edges$to,
+                      directed = TRUE,
+                      net_name = "faux_mesa")
+```
+
+`netwrite` stores its outputs in a single list object. However, one may find it more convenient to extract elements of this list to the R Global Environment. We take this approach by using the `list2env` function:
+
+```{r list2env}
+list2env(nw_fauxmesa, .GlobalEnv)
+```
+
+### Interpreting `netwrite` Output
+
+`netwrite` outputs multiple measures aimed at characterizing the network's global structure. One can view a select set of these measures in a summary visualization stored in the `system_measure_plot` object:
+
+```{r system_measure_plot, fig.height = 4, fig.width=7}
+system_measure_plot
+```
+
+A more comprehensive set of measures is available in traditional table form via the `system_level_measures` object:
+
+```{r system_level_measures}
+head(system_level_measures)
+```
+
+`netwrite` also creates an `igraph` object that contains all of the original data from the input nodelist and edgelist, plus edge-level and node-level metrics computed on the network by `netwrite`. This `igraph` object allows for traditional network manipulation, such as plotting.
+
+```{r igraph_object}
+faux_mesa
+```
+
+`netwrite` outputs an edgelist dataframe of the same length as the input edgelist. This edgelist object contains unique dyad-level ids, simplified ego and alter ids (`i_id` and `j_id`, respectively), and the original id values and weights as they initially appeared in `edges` (uniformly set to 1 if no weights are defined). (You may notice that `i_id` and `j_id` are zero-indexed. This is done to maximize compatibility with the `igraph` package.)
+
+```{r edgelist}
+head(edgelist)
+```
+
+Finally, `netwrite` returns several popular node-level measures as a dataframe of values and plots their distributions. These are accessed via the `node_measures` and `node_measure_plot` objects, respectively. The metrics set are restricted to those applicable to the type of graph (weighted/unweighted, directed/undirected).
+
+```{r node_measures}
+head(node_measures)
+```
+
+On first glance, one sees that the `node_measures` dataframe contains simplified node identifiers matching those appearing in `edgelist`. One also sees that `node_measures` contains all original node-level attributes as they appeared in our original nodelist. Depending on how it was initially named, a nodelist's original column of node identifiers may be renamed to `original_id`.
+
+```{r node_measure_plot, fig.height = 6, fig.width = 7}
+node_measure_plot
+```
+
+### Adjacency Matrices
+
+Here we provide a quick example of how to use `netwrite` on an adjacency matrix:
+
+```{r nw_triad, warning = FALSE}
+nw_triad <- netwrite(data_type = "adjacency_matrix",
+                     adjacency_matrix = triad,
+                     directed = TRUE,
+                     net_name = "triad_igraph")
+
+list2env(nw_triad, .GlobalEnv)
+```
+
+### Multirelational Networks
+
+In some networks, edges may represent one of several different types of relationships between nodes. These *multirelational* (or *multiplex*) networks often demand more detailed processing and analysis— users may want to subset these networks by each edge type and calculate measures based on each subset. `netwrite` handles such processing and analysis in a streamlined manner while making minimal additional user demands. The function only requires that a multirelational network's edgelist is stored in a long format in which each dyad-relationship type combination is given its own row.
+
+To show how `netwrite` works with multirelational networks, we'll work with an edgelist of relationships between prominent families in Renaissance-era Florence. Here edges between nodes can represent marriages or business transactions between families:
+
+```{r florentine_head}
+head(florentine_edges)
+```
+
+To treat this network as multirelational, we only need to specify which column in this edgelist indicates the type of each edge in the network. We do this using the `type` argument:
+
+```{r nw_flor, warning = FALSE}
+nw_flor <- netwrite(nodelist = florentine_nodes,
+                    node_id = "id",
+                    i_elements = florentine_edges$source,
+                    j_elements = florentine_edges$target,
+                    type = florentine_edges$type,
+                    directed = FALSE,
+                    net_name = "florentine")
+
+list2env(nw_flor, .GlobalEnv)
+```
+
+When given a multi-relational network, `netwrite` will return the outputs described previously in slightly different ways. First, we can see that the `edgelist` object is now a list containing an edgelist subset by each type of tie. Additionally, this list contains a complete edgelist for the `summary_graph` containing all ties.
+
+```{r edgelist_business}
+head(edgelist$business)
+```
+
+```{r edgelist_summary}
+head(edgelist$summary_graph)
+```
+
+`node_measures` remains a single data frame, but now includes each node-level metric calculated for each individual relation type as well as the overall graph. We see here that `netwrite` has calculated 3 different values for `total_degree`. However, `node_measures_plot` is now a list containing summary visualizations for each relation type as well as the overall `summary_graph`.
+
+```{r total_degree_type}
+node_measures %>% 
+  dplyr::select(id, total_degree, marriage_total_degree, business_total_degree) %>%
+  head()
+```
+
+Similarly, `system_level_measures` remains a single data frame, while `system_measure_plot` has become a list containing multiple visualizations. Note that `system_level_measures` now contains additional column detailing measure values for each individual relation type.
+
+```{r system_measures_multi}
+head(system_level_measures)
+```
+
+`netwrite` also produces both an `igraph` object of the overall network, as it does with networks with a single relation type, as well as a list of `igraph` objects for each subset of the network. Here we access the `igraph_list` object to compare business and marriage relationships between families side-by-side:
+
+```{r flor_igraph, fig.height = 4, fig.width = 7}
+par(mfrow = c(1, 2), mar = c(1, 1, 1, 1))
+# Create a consistent layout for both plots
+flor_layout <- igraph::layout.fruchterman.reingold(igraph_list$marriage)
+plot(igraph_list$marriage, vertex.label = NA, vertex.size = 4, edge.arrow.size = 0.2, 
+     vertex.color = "gray", main = "Marriage Network", layout = flor_layout)
+plot(igraph_list$business, vertex.label = NA, vertex.size = 4, edge.arrow.size = 0.2, 
+     vertex.color = "red", main = "Business Network", layout = flor_layout)
+```
+
+### `ideanet` Visualization App
+
+For those less comfortable with R (or programming in general), the `ideanet` package also offers a GUI interface that allows users to explore, measure, and visualize sociocentric networks without the need for coding. One accesses this app by calling the `ideanetViz` function (note: you'll want to run this function in your R console rather than in this notebook).
+
+```{r, eval = FALSE}
+ideanetViz()
+```
+
+
+

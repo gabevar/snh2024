@@ -1,0 +1,8 @@
+"0","nw_triad <- netwrite(data_type = ""adjacency_matrix"","
+"0","                     adjacency_matrix = triad,"
+"0","                     directed = TRUE,"
+"0","                     net_name = ""triad_igraph"")"
+"0",""
+"0","list2env(nw_triad, .GlobalEnv)"
+"1","<environment: R_GlobalEnv>
+"
