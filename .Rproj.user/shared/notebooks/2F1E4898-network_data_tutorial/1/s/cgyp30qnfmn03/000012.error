@@ -1,0 +1,1 @@
+{"frames":[{"func":"vignette(\"netwrite\", package = ideanet)","file":"","line_number":0,"end_line_number":0,"character_number":0,"end_character_number":0},{"func":"tools::getVignetteInfo(package, lib.loc, all)","file":"","line_number":0,"end_line_number":0,"character_number":0,"end_character_number":0}],"message":"Error: object 'ideanet' not found\n"}

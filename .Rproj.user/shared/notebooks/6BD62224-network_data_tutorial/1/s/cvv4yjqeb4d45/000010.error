@@ -1,1 +1,0 @@
-{"frames":[],"message":"Error in graph_from_data_frame(d = fauxmesa_edges, vertices = fauxmesa_nodes,  : \n  could not find function \"graph_from_data_frame\"\n"}

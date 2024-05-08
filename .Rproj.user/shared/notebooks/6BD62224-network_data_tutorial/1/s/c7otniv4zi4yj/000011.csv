@@ -1,2 +1,0 @@
-"0","plot(igraph_list$business, vertex.label = NA, vertex.size = 4, edge.arrow.size = 0.2, "
-"0","     vertex.color = ""red"", main = ""Business Network"", layout = flor_layout)"

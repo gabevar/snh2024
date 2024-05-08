@@ -1,6 +1,0 @@
-"0","nw_fauxmesa <- netwrite(nodelist = fauxmesa_nodes,"
-"0","                      node_id = ""id"","
-"0","                      i_elements = fauxmesa_edges$from,"
-"0","                      j_elements = fauxmesa_edges$to,"
-"0","                      directed = TRUE,"
-"0","                      net_name = ""faux_mesa"")"

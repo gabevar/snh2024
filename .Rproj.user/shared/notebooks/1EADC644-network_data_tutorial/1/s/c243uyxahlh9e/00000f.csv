@@ -1,3 +1,0 @@
-"0","node_measures %>% "
-"0","  dplyr::select(id, total_degree, marriage_total_degree, business_total_degree) %>%"
-"0","  head()"

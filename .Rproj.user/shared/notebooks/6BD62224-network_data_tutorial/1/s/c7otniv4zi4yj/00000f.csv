@@ -1,5 +1,0 @@
-"0","par(mfrow = c(1, 2), mar = c(1, 1, 1, 1))"
-"0","# Create a consistent layout for both plots"
-"0","flor_layout <- igraph::layout.fruchterman.reingold(igraph_list$marriage)"
-"0","plot(igraph_list$marriage, vertex.label = NA, vertex.size = 4, edge.arrow.size = 0.2, "
-"0","     vertex.color = ""gray"", main = ""Marriage Network"", layout = flor_layout)"
