@@ -1,0 +1,53 @@
+"0","res <- netwrite(i_elements = edges$from, j_elements = edges$to, 
+                nodelist = nodes, node_id = ""id"", directed = T)
+"
+"2","Warning in bonacich_igraph(g, directed = as.logical(directed), message = message) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(g, directed = as.logical(directed), message = message) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Adjacency matrix for network is singular. Network will be treated as undirected in order to calculate measures
+
+"
+"2","Warning in bonacich_igraph(g, directed = as.logical(directed), bpct = -0.75,  :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(g, directed = as.logical(directed), bpct = -0.75,  :"
+"2","
+ "
+"2"," (Bonacich power centrality) Adjacency matrix for network is singular. Network will be treated as undirected in order to calculate measures
+
+"
+"2","Warning in eigen_igraph(g, directed = as.logical(directed), message = message) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(g, directed = as.logical(directed), message = message) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Adjacency matrix for network is singular. Network will be treated as undirected in order to calculate measures
+
+"
+"2","Warning in eigen_igraph(g, directed = as.logical(directed), message = message) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in eigen_centralization(g, directed = TRUE) :"
+"2","
+ "
+"2"," Eigenvector centralization calculated only for largest weak component.
+"
+"2","Warning in k_cohesion(graph = g) :"
+"2","
+ "
+"2"," Graph will be treated as undirected for calculation of k-core cohesion measure.
+"

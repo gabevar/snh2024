@@ -1,0 +1,46 @@
+library(igraph)
+library(ggraph)
+library(dplyr)
+
+# Bipartite
+df <- readxl::read_excel("/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/bipartite.xlsx")
+
+g <- graph_from_data_frame(df, directed=FALSE)
+V(g)$type <- bipartite_mapping(g)$type
+
+V(g)$color <- ifelse(V(g)$type, "lightblue", "salmon")
+V(g)$shape <- ifelse(V(g)$type, "circle", "square")
+E(g)$color <- "lightgray"
+V(g)$label.cex <- ifelse(V(g)$type, 0.6, 0.4)
+
+p1 <- ggraph(g, layout = "nicely") +
+  geom_node_point(alpha = 0.2, aes(shape = shape), show.legend = F) +
+  geom_node_text(aes(label = name, , color = color), repel = T, show.legend = F) +
+  geom_edge_link(alpha = 0.2) +
+  theme_void()
+
+ggsave("/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/plot1.png", width = 9, height = 7)
+
+# Projection
+solo <- df %>% count(v2) %>% filter(n == 1) %>% pull(v2)
+df2 <- df %>% mutate(v2 = case_when(v2 %in% solo ~ "Other", T ~ v2))
+
+g2 <- graph_from_data_frame(df2, directed=FALSE)
+V(g2)$type <- bipartite_mapping(g2)$type
+
+V(g2)$color <- ifelse(V(g2)$type, "lightblue", "salmon")
+V(g2)$shape <- ifelse(V(g2)$type, "circle", "square")
+E(g2)$color <- "lightgray"
+V(g2)$label.cex <- ifelse(V(g2)$type, 0.6, 0.4)
+plot(g2, vertex.label.color = "black")
+
+proj1 <- igraph::bipartite_projection(g2)$proj2
+proj2 <- igraph::bipartite_projection(g2)$proj1
+
+p2 <- ggraph(proj2, layout = "fr") +
+  geom_node_point(alpha = 0.08) +
+  geom_node_text(aes(label = name, color = as.factor(mem)), repel = T, show.legend = F) +
+  geom_edge_link(alpha = 0.08) +
+  theme_graph()
+
+ggsave("/Users/gabe/Documents/Projects/Grants and Conferences/snh2024/plot2.png", width = 9, height = 7)

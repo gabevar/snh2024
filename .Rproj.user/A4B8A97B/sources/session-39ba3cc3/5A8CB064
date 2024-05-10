@@ -3,7 +3,7 @@
     "path": "~/Documents/Projects/Grants and Conferences/snh2024/snh2024/snh24_install.R",
     "project_path": "snh24_install.R",
     "type": "r_source",
-    "hash": "2991428278",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1714762317538.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "13,0",
+        "cursorPosition": "79,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1714764382,
+    "lastKnownWriteTime": 1715275641,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1714764382427,
+    "last_content_update": 1715275641,
     "read_only": false,
     "read_only_alternatives": []
 }

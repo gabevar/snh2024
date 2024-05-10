@@ -23,6 +23,7 @@ install.packages(c("tinytex", "tidyverse", "magrittr", "igraph",
 
 # `devtools` (for installing `ideanet` from GitHub)
 install.packages("devtools")
+install.packages("egor") # if given needs compilation method - select/type "no"
 
 # `ideanet` and packages for core functionality
 devtools::install_github("Tom-Wolff/ideanet@main", build_vignettes = TRUE)
@@ -60,7 +61,7 @@ install.packages(c("EpiModel", "netdiffuseR"))
 #    T E R G M   D E M O   /   L A B    #
 #########################################
 
-install.packages(c("tergm"))
+install.packages(c("btergm", "ergMargins"))
 
 ###########################################
 #    V I S U A L I Z A T I O N   L A B    #
