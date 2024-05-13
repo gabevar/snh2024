@@ -1,0 +1,5 @@
+"0","color <- RColorBrewer::brewer.pal(3, ""Set1"") "
+"0","color <- color[as.numeric(as.factor(V(net)$sex))]"
+"0","V(net)$color <- color"
+"0","plot(net, vertex.color = V(net)$color, layout = layout_with_kk, vertex.label = NA, "
+"0","     edge.arrow.size = 0.2, vertex.size = V(net)$total_degree)"

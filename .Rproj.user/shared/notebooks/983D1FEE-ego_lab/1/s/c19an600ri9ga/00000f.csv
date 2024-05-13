@@ -1,0 +1,4 @@
+"0","gss <- read.csv(""https://raw.githubusercontent.com/mahoffman/stanford_networks/main/data/gss_local_nets.csv"", stringsAsFactors = TRUE)"
+"0","gss <- gss %>% "
+"0","  filter(numgiven > 0) %>%  # removing respondents with 0 nominations"
+"0","  rowid_to_column(""ego_id"") # create an ID for each ego"

@@ -1,0 +1,6 @@
+"0","ego_homophily(ego_id = res$egos$ego_id, "
+"0","              ego_measure = res$egos$relig,"
+"0","              alter_ego = res$alters$ego_id,"
+"0","              alter_measure = res$alters$relig,"
+"0","              prefix = ""relig"","
+"0","              prop = T)"

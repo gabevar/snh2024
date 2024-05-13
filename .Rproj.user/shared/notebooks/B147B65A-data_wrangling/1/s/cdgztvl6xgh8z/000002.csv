@@ -1,0 +1,4 @@
+"0","```r
+edgelist <- edgelist %>% mutate(type = case_when(value == 2 ~ \"friendship\",
+                                                 value == 1 ~ \"discussion\"))
+```"

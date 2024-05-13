@@ -1,0 +1,6 @@
+"0","```r
+E(net)$lty <- ifelse(E(net)$type == \"friendship\", 1,
+                       ifelse(E(net)$type == \"discussion\", 2, NA))
+
+plot(net, vertex.label = V(net)$name, vertex.color = V(net)$color, vertex.shape = V(net)$shape, edge.arrow.size = 0.2)
+```"

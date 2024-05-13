@@ -1,0 +1,4 @@
+"0","selected_cols <- c(""sex"", ""race"", ""age"", ""relig"")"
+"0","alter_data$na <- rowSums(!is.na(alter_data[selected_cols]))"
+"0",""
+"0","alter_data <- alter_data %>% filter(na != 0) %>% select(-na)"

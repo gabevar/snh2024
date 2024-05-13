@@ -1,0 +1,437 @@
+---
+title: "ego_lab"
+format: html
+editor: visual
+---
+
+## Setup
+
+As always, let's start with importing the packages we will need.
+
+```{r, warning = F, message = F}
+library(igraph)
+library(tidyverse)
+library(ggraph)
+library(tidygraph)
+library(egor)
+library(ideanet)
+```
+
+For the data, we will analyzing ego-network data from the GSS gathered in 2004. Respondents were asked how many people they discussed "important matters" with (for an interesting critique of that question, see https://www.jstor.org/stable/3598339). The data has a "wide" structure -- one row represents one interviewed respond. Since traditional surveys are typical structured in this way, you may receive or gather data in this format. Unfortunately, this requires an extensive amount of data manipulation to turn into a usable ego-network dataset.
+
+Our goal is to transform the one "wide" dataset into 3 separate datasets:
+
+1.  An ego dataset: Information about the respondents themselves.
+2.  An alter dataset: Connections between respondents (egos) and their nominations (alters), in addition to information about each alter.
+3.  An alter-alter dataset: These contain connections between each alter.
+
+```{r}
+gss <- read.csv("https://raw.githubusercontent.com/mahoffman/stanford_networks/main/data/gss_local_nets.csv", stringsAsFactors = TRUE)
+gss <- gss %>% 
+  filter(numgiven > 0) %>%  # removing respondents with 0 nominations
+  rowid_to_column("ego_id") # create an ID for each ego
+```
+
+### Ego dataset
+
+This one is the easiest. To create the ego dataset, all we need is to select the column of ids and attributes of the respondents themselves.
+
+```{r}
+ego_data <- gss %>% 
+  select(ego_id, sex, race, age, partyid, relig, numgiven) # select columns
+
+head(ego_data)
+```
+
+### Alter dataset
+
+This one is a bit tougher, and there are lots of ways to approach this particular problem. Let's start by taking a closer look at the columns of interest.
+
+```{r}
+gss %>% select(sex1:relig5) %>% names()
+```
+
+We know from the codebook that the \[variable\]\[number\] represents the attributes of each nominated alter. For example, "sex1", "race1", "educ1", "age1" and "relig1" are the sex, race, educational level, age and religion of the first person nominated by the ego in that row.
+
+Our goal is to focus on these particular columns and pivot the dataset from wide to long. The trick is to find a pattern that works: for example, all columns that end with a letter followed by a number.
+
+```{r}
+alter_data <- gss %>% 
+  select(ego_id, matches("[a-z][0-9]$")) # selecting columns that end with a letter and a number.
+
+alter_data
+```
+
+So far so good. But a quick review of the data reveals something: While the education of the **first** alter for each ego is coded numerically (with a 1 or a 0), the subsequent alters are coded with words. We will ignore education now because of this inconsistency in the coding, since it will make our data manipulation a bit harder. This does demonstrate that you should allow check your data!
+
+```{r}
+alter_data %>% select(matches("educ"))
+
+alter_data <- alter_data %>% select(-matches("educ"))
+```
+
+Now that we have this out of the way, let's turn back to pivoting our data from wide to long. We will need to split the data by type. In our case, we only have numbers/integers (denoted by the "int" symbol) and words coded as factors (denoted by the "fctr" symbol).
+
+```{r}
+alter_data_int <- alter_data %>% 
+  group_by(ego_id) %>% # make sure to group by ego
+  select(where(is.integer)) %>% # only take integers
+  pivot_longer(-ego_id) %>% # Pivot so that everything is long
+  separate(name, into = c("name", "alter_id"), sep = -1) %>% # split the id of alters from the variable
+  pivot_wider(names_from = "name", values_from = "value") %>% # Half pivot back to wide
+  mutate(alter_id = as.numeric(alter_id)) # cleanup
+
+head(alter_data_int)
+```
+
+Let's do it again for factors, and then merge the two datasets together.
+
+```{r}
+alter_data_fact <- alter_data %>% 
+  group_by(ego_id) %>% 
+  select(where(is.factor)) %>% # note the change to factor
+  pivot_longer(-ego_id) %>%
+  separate(name, into = c("name", "alter_id"), sep = -1) %>% 
+  pivot_wider(names_from = "name", values_from = "value") %>% 
+  mutate(alter_id = as.numeric(alter_id)) # cleanup
+
+alter_data <- alter_data_int %>% left_join(alter_data_fact, by = c("ego_id", "alter_id"))
+```
+
+Almost done! We have everything in the right format, but we have one last problem: each ego has five connections, when we know that they don't actually have that many. Again, there are several ways to resolve this. For now, we are going to erase all connections that have no alter data.
+
+```{r}
+selected_cols <- c("sex", "race", "age", "relig")
+alter_data$na <- rowSums(!is.na(alter_data[selected_cols]))
+
+alter_data <- alter_data %>% filter(na != 0) %>% select(-na)
+```
+
+Done!
+
+### Alter-Alter data
+
+Last on our list are connections between the alters themselves. The codebook tells us that these are coded as the "close" variables in the format \[close\]\[alter_id1\]\[alter_id2\]. So we will apply the same strategy that we used on the alter data.
+
+```{r}
+aa_data <- gss %>% 
+  select(ego_id, matches("close")) %>% 
+  group_by(ego_id) %>% 
+  pivot_longer(-ego_id) %>% 
+  separate(name, into = c("name", "to"), sep = -1) %>% # remember to split up twice here
+  separate(name, into = c("name", "from"), sep = -1) %>% 
+  select(-name) %>% # remove useful column
+  mutate(from = as.numeric(from), to = as.numeric(to)) %>% 
+  filter(value > 0 & !is.na(value))
+
+head(aa_data)
+```
+
+## Constructing an ego-network object.
+
+Ok, so now that we have all the pieces it should be easy enough to create a network object...right?
+
+Unfortunately the packages we typically use for network analysis are built to handle sociometric networks, but not necessarily repeated smaller graphs who center an ego. It is worth going through the manual creation of an ego-network just to make sure we understand whats going on step by step.
+
+Let's start with the first respondent. Since each person is a network, we want to focus just on the relationships between the alter's of our first ego, and retrieve the attributes of these alters.
+
+```{r}
+one_alter <- alter_data %>% 
+    filter(ego_id == 1) %>% 
+    ungroup() %>% 
+    select(-ego_id)
+
+one_aa <- aa_data %>% 
+  filter(ego_id == 1) %>% 
+  ungroup() %>% 
+  select(-ego_id)
+
+net <- igraph::graph_from_data_frame(one_aa, vertices = one_alter, directed = F)
+plot(net)
+```
+
+We could stop here. But often, we want to present the network with the ego itself. This is conceptually simple, as we know that ego is simply a node that is connected (by definition) to every other node in the network.
+
+```{r}
+net <- igraph::add_vertices(net, 1) # adding an extra node
+net <- add_edges(net, c(rbind(seq(gorder(net) - 1), gorder(net)))) # adding edges to each other node in the network
+V(net)$name[is.na(V(net)$name)] <- "ego" # calling it "ego"
+
+plot(net)
+```
+
+That's a bit better, but we are still missing the attributes of ego. One way to do this is to turn the network back into a dataframe and add the attributes we need.
+
+```{r}
+nodes <- igraph::as_data_frame(net, what = "vertices") # turn our network back into a nodelist and edgelist
+edges <- igraph::as_data_frame(net, what = "edges")
+
+one_ego <- ego_data %>% # pull information about ego
+  filter(ego_id == 1) %>% 
+  mutate(name = "ego", sex = case_when(sex == "male" ~ 0, T ~ 1), # make sure the ego variables match the alter variables
+         race = case_when(race == "white" ~ 0, T ~ 1)) %>%
+  select(name, sex, race, age, relig)
+
+nodes <- nodes %>% slice(-n()) %>% bind_rows(one_ego) # bind to the nodelist
+
+net <- graph_from_data_frame(edges, vertices = nodes, directed = F) 
+```
+
+Let's take a look
+
+```{r}
+as_tbl_graph(net) %>% # graph the network
+  ggraph(layout = 'focus', focus = gorder(net)) +
+  geom_edge_link(alpha = 0.5) +
+  geom_node_point(aes(color = as.factor(sex)), size = 3) +
+  geom_node_text(aes(label = name), repel = T) +
+  coord_fixed() + 
+  labs(color='Sex') +
+  scale_color_viridis_d() +
+  theme_graph()
+```
+
+Not bad! Now you **could** put this all in a loop yourself and create a list of as many networks as there are ego's in your data. But the process is tedious and error prone. Instead, we can use packages that manage ego-network data (once it's correctly set up) and produce either ego-network objects, or lists of igraph objects.
+
+## Alternatives to ego-network setup
+
+### Egor
+
+`Egor` is the primary package for the management of ego-networks. It expects the data as we have it set up already.
+
+```{r}
+egor_df <- egor(egos = ego_data,
+                alters = alter_data, 
+                aaties = aa_data,
+                ID.vars = list(ego = "ego_id", alter = "alter_id", source = "from", target = "to"))
+
+plot(egor_df)
+```
+
+### IDEANet
+
+Alternatively you can use the `IDEANet` package to produce a list of igraph objects, measurements for each graph and plots. Optionally, we can also create an igraph object.
+
+```{r}
+res <- ego_netwrite(egos = ego_data, ego_id = "ego_id",
+             alters = alter_data, alter_id = "alter_id", alter_ego = "ego_id", max_alters = 5,
+             alter_alter = aa_data, aa_ego = "ego_id", i_elements = "from", j_elements = "to")
+
+plot(res$igraph_objects[[1]]$igraph_ego)
+```
+
+## Network measures
+
+### Homophily and Diversity.
+
+You've seen some of the logic behind ego-network measures. Many (really, most) of these measures are implemented in packages such as `egor`, `IDEANet` and `igraph`. The trick is to figure out which form of the data is necessary to calculate a particular metric.
+
+Some of these metrics are fairly straightforward: for example, how many alters do each ego have?
+
+```{r}
+res$alters %>% count(ego_id)
+```
+
+The alter dataset contains a lot of information we are usually interested in when calculating ego-network metrics. For example, how diverse is each ego-network in terms of sex?
+
+```{r}
+res$alters %>%
+  group_by(ego_id, sex) %>%
+  summarise(count = n()) %>%
+  mutate(proportion = prop.table(count)) %>% 
+  filter(sex == 1)
+```
+
+We could be a bit more sophisticated and ask about the Blau index and it's normalized version the IQV
+
+```{r}
+res$alters %>%
+  group_by(ego_id, sex) %>%
+  summarise(count = n()) %>%
+  mutate(proportion = prop.table(count)) %>% # get proportions
+  mutate(proportion = proportion ^ 2) %>% # Calculate h-index
+  summarise(h_index = 1 - sum(proportion)) %>% 
+  mutate(maxval = 1 - (1/length(unique(res$alters$sex))), # calculate iqv
+         iqv = h_index / maxval)
+```
+
+While it's important to understand these measures and be able to do them manually, it's much more convenient to have tools that produce these measures automatically. IDEANet has many of the tools of interest to ego-network researchers.
+
+```{r}
+h_index(ego_id = res$alters$ego_id,
+        measure = res$alters$sex,
+        prefix = "sex")
+
+iqv(ego_id = res$alters$ego_id,
+        measure = res$alters$sex,
+        prefix = "sex")
+```
+
+We can go through the same process for homophily variables. For example, how many and what proportion of alters share ego's religion?
+
+```{r}
+ego_dat <- data.frame(ego_id = res$egos$ego_id, ego_val = res$egos$relig)
+alter_dat <- data.frame(ego_id = res$alters$ego_id, alter_val = res$alters$relig)
+var_df <- dplyr::left_join(ego_dat, alter_dat, by = "ego_id")
+
+var_df %>% 
+  group_by(ego_id) %>% 
+  summarize(same_relig = sum(as.character(alter_val) == as.character(ego_val), na.rm = T),
+            prop_same_relig = same_relig/n())
+```
+Again, after understanding the logic behind this, we are better off using a formula such as this one.
+
+```{r}
+ego_homophily(ego_id = res$egos$ego_id, 
+              ego_measure = res$egos$relig,
+              alter_ego = res$alters$ego_id,
+              alter_measure = res$alters$relig,
+              prefix = "relig",
+              prop = T)
+```
+
+We can check out the reverse of similarity with the E-I index
+
+```{r}
+var_df %>% 
+  group_by(ego_id) %>% 
+  summarize(length = n(), 
+            num_sim = sum(as.character(alter_val) == as.character(ego_val), na.rm = T), 
+            prop_sim = num_sim/length, num_diff = sum(as.character(alter_val) != as.character(ego_val), na.rm = T), 
+            prop_diff = num_diff/length, 
+            ei_index = (prop_diff - prop_sim)/length)
+```
+
+But IDEANet can be our one-stop shop
+
+```{r}
+ei_index(ego_id = res$egos$ego_id, 
+         ego_measure = res$egos$relig,
+         alter_ego = res$alters$ego_id,
+         alter_measure = res$alters$relig,
+         prefix = "relig")
+```
+
+
+### Structural
+
+While the content of ego's networks is always important, we can't forget about the structural features of the networks as well. Luckily, many of the measurements of structure are available in sociometric analysis packages such as igraph. And recall that we have produced an igraph object for each of our ego-networks.
+
+Let's take a look at a couple of typical structural variables we may be interested in using one of our igraph object.
+
+```{r}
+net <- res$igraph_objects[[1]]$igraph
+
+edge_density(net) # density
+sum(degree(net) == 0)/gorder(net) # proportion isolates
+gorder(net) - mean(degree(net)) # effective size (redundancy)
+```
+
+All these measures are trivial to construct given that they rely on well-established functions applied to an existing graph object. Of course, some may require you to transform the igraph object once again. For example, the fragmentation index relies on distances between nodes.
+
+```{r}
+t <- igraph::distances(net) # get distances between all nodes to all nodes
+t[is.infinite(t)] <- 0 # remove impossible paths
+t <- t > 0 # binarize
+diag(t) <- NA
+1 - mean(t, na.rm = TRUE) # mean distance
+```
+
+Many of these structural variables are available directly in the output of IDEANet.
+
+```{r}
+res$summaries %>% select(ego_id, network_size, density, prop_isolates, 
+                         effective_size, fragmentation_index)
+```
+
+There are many more measure to explore, and I strongly recommend you take a look at Perry (2018) Egocentric Network Analysis for a clear breakdown of the measures described by Prof. Perry and included in IDEANet.
+
+## Modeling
+
+### Ego-level analysis
+
+Briefly, I want to discuss how to set up your data so you can model a particular outcome using the variables we have just calculated. 
+
+If your outcome is something about ego (e.g., academic success, mental health), then each observation of the model will be a single ego. Since each observation is an ego, you can only use variables that describe the network as a whole (e.g. density, fragmentation, size) or summaries of alter variables (e.g., average alter degree, median age).
+
+Our plan is to **have all our model information contained in the ego data framework**.
+
+```{r}
+mod_df <- res$summaries %>% 
+  select(ego_id, network_size, mean_degree, 
+         num_isolates, effective_size) # Stuff we already have calculated
+  
+rel_ei <- ei_index(ego_id = res$egos$ego_id,
+             ego_measure = res$egos$relig,
+             alter_ego = res$alters$ego_id,
+             alter_measure = res$alters$relig,
+             prefix = "relig")
+
+sex_iqv <- iqv(ego_id = res$alters$ego_id,
+               measure = res$alters$sex,
+               prefix = "sex")
+
+mod_df <- mod_df %>% # bring them all back in.
+  left_join(rel_ei, by = "ego_id") %>% 
+  left_join(sex_iqv, by = "ego_id") %>% 
+  drop_na()
+```
+
+Now that we have our data all set up within an ego dataset framework, we can easily look at association using basic regression.
+
+```{r}
+summary(lm(sex_iqv ~ network_size + relig_ei_index + mean_degree + num_isolates, data = mod_df))
+```
+
+### Ego-alter level analysis
+
+Now let's say instead we are interested in the relationship between ego and alter. For example, what variables are associated with a relationship being perceived as supportive by ego? Hierarchical models should be a whole tutorial of their own, so I'm not going to go into great detail here.
+
+However, I do want to talk about the structure of the data required to run a model. In the previous ego-level model, we focused on getting all the data we wanted to model into the ego dataset. This time, we are interested in relationships so we will focus on getting all our data into the **alter dataset**.
+
+For this example, let's borrow some data from IDEANet.
+
+```{r}
+egos <- ideanet::ngq_egos
+alters <- ideanet::ngq_alters
+aa <- ideanet::ngq_aa
+
+res <- ego_netwrite(egos = egos, ego_id = "ego_id",
+                    alters = alters, alter_id = "alter_id", alter_ego = "ego_id",
+                    alter_alter = aa, aa_ego = "ego_id", i_elements = "alter1", j_elements = "alter2")
+```
+
+Now we have to gather data from our different views of the ego-network, and put them all into our ego-alter dataset.
+
+```{r}
+# Grab existing ego-alter variables
+mod_df <- res$alters %>% 
+  select(ego_id, alter_id, face, sex_alter = sex, white_alter = white, 
+         family, total_degree)
+
+# Pick out ego variables
+mod_df <- mod_df %>% 
+  left_join(res$egos %>% select(ego_id, age_ego = age, 
+                                sex_ego = sex, white_ego = white, edu_ego = edu), by = "ego_id")
+
+# Pick out network level variables
+mod_df <- mod_df %>% 
+  left_join(res$summaries %>% select(ego_id, network_size, num_isolates, effective_size), by = "ego_id")
+
+# Create some comparisons
+mod_df <- mod_df %>% 
+  mutate(same_sex = case_when(sex_alter == sex_ego ~ 1, T ~ 0), 
+         both_white = case_when(white_alter == white_ego ~ 1, T ~ 0))
+```
+
+Now that we have all the variables we are interested in, we can look at associations at the relationship level.
+
+```{r}
+summary(lme4::lmer(face ~ white_alter + same_sex + total_degree + age_ego + network_size + (1|ego_id), data = mod_df))
+```
+
+
+
+
+
+

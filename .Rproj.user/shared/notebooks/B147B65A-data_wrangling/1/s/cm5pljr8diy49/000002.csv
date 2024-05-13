@@ -1,0 +1,8 @@
+"0","```r
+friendship_net <- subgraph.edges(net, E(net)[E(net)$type == \"friendship\"])
+discussion_net <- subgraph.edges(net, E(net)[E(net)$type == \"discussion\"])
+
+par(mfrow = c(1, 2))
+plot(friendship_net, vertex.label = V(net)$name, vertex.color = V(net)$color, vertex.shape = V(net)$shape, edge.arrow.size = 0.2)
+plot(discussion_net, vertex.label = V(net)$name, vertex.color = V(net)$color, vertex.shape = V(net)$shape, edge.arrow.size = 0.2)
+```"

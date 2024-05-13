@@ -1,0 +1,5 @@
+"0","```r
+get.vertex.attribute(net)
+
+plot(net, vertex.label = V(net)$name, vertex.color = V(net)$adoption)
+```"

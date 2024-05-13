@@ -1,0 +1,10 @@
+"0","```r
+nodelist <- nodelist %>% mutate(color = colour_values(adoption, palette = \"heat_hcl\"),
+                                shape = case_when(sex == 1 ~ \"circle\", sex == 2 ~ \"square\", is.na(sex) ~ \"pie\"))
+
+edgelist <- edgelist %>% mutate(lty = case_when(type == \"friendship\" ~ 1, type == \"discussion\" ~ 2))
+
+net <- graph_from_data_frame(edgelist, directed = T, vertices = nodelist)
+
+plot(net, vertex.label = V(net)$name, vertex.color = V(net)$color, vertex.shape = V(net)$shape, edge.arrow.size = 0.2)
+```"

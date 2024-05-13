@@ -1,0 +1,9 @@
+"0","```r
+edgelist <- df %>% 
+  select(id, tie_1:tie_19)
+
+df %>% 
+  select(id, starts_with(\"tie_\"))
+
+edgelist
+```"

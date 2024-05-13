@@ -1,0 +1,4 @@
+"0","ego_data <- gss %>% "
+"0","  select(ego_id, sex, race, age, partyid, relig, numgiven) # select columns"
+"0",""
+"0","head(ego_data)"

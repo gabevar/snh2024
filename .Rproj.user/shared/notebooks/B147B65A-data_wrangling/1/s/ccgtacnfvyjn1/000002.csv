@@ -1,0 +1,8 @@
+"0","```r
+V(net)$shape <- ifelse(V(net)$sex == 1, \"circle\",
+                       ifelse(V(net)$sex == 2, \"square\", NA))
+
+V(net)$shape[is.na(V(net)$sex)] <- \"pie\"
+
+plot(net, vertex.label = V(net)$name, vertex.color = V(net)$color, vertex.shape = V(net)$shape)
+```"

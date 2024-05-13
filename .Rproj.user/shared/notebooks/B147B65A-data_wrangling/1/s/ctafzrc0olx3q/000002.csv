@@ -1,0 +1,4 @@
+"0","```r
+edgelist <- edgelist %>% rename(from = id, to = name)
+edgelist <- edgelist %>% select(-value)
+```"

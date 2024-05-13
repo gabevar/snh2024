@@ -1,0 +1,7 @@
+"0","var_df %>% "
+"0","  group_by(ego_id) %>% "
+"0","  summarize(length = n(), "
+"0","            num_sim = sum(as.character(alter_val) == as.character(ego_val), na.rm = T), "
+"0","            prop_sim = num_sim/length, num_diff = sum(as.character(alter_val) != as.character(ego_val), na.rm = T), "
+"0","            prop_diff = num_diff/length, "
+"0","            ei_index = (prop_diff - prop_sim)/length)"

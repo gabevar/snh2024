@@ -1,0 +1,7 @@
+"0","res$alters %>%"
+"0","  group_by(ego_id, sex) %>%"
+"0","  summarise(count = n()) %>%"
+"0","  mutate(proportion = prop.table(count)) %>% "
+"0","  filter(sex == 1)"
+"1","[38;5;252m`summarise()` has grouped output by 'ego_id'. You can override using the `.groups` argument.[39m
+"

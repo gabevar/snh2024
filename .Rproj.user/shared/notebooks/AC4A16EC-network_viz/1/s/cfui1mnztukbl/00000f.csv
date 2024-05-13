@@ -1,0 +1,4 @@
+"0","res <- netwrite(i_elements = edges$from, j_elements = edges$to, "
+"0","                nodelist = nodes, node_id = ""id"", directed = T)"
+"0",""
+"0","net <- res$network"

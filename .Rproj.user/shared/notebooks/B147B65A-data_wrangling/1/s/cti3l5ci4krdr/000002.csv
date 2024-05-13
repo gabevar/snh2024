@@ -1,0 +1,9 @@
+"0","```r
+library(igraph)
+
+net <- graph_from_data_frame(edgelist, directed = T)
+
+V(net)$name
+
+plot(net)
+```"

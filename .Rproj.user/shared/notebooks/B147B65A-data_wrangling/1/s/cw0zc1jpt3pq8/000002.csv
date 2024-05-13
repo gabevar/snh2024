@@ -1,0 +1,5 @@
+"0","```r
+nodelist <- df %>% select(id, name, sex, adoption)
+
+nodelist
+```"

@@ -1,0 +1,10 @@
+"0","res$alters %>%"
+"0","  group_by(ego_id, sex) %>%"
+"0","  summarise(count = n()) %>%"
+"0","  mutate(proportion = prop.table(count)) %>% # get proportions"
+"0","  mutate(proportion = proportion ^ 2) %>% # Calculate h-index"
+"0","  summarise(h_index = 1 - sum(proportion)) %>% "
+"0","  mutate(maxval = 1 - (1/length(unique(res$alters$sex))), # calculate iqv"
+"0","         iqv = h_index / maxval)"
+"1","[38;5;252m`summarise()` has grouped output by 'ego_id'. You can override using the `.groups` argument.[39m
+"

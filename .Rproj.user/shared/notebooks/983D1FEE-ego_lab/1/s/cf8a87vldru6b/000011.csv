@@ -1,0 +1,868 @@
+"0","res <- ego_netwrite(egos = ego_data, ego_id = ""ego_id"","
+"0","             alters = alter_data, alter_id = ""alter_id"", alter_ego = ""ego_id"", max_alters = 5,"
+"0","             alter_alter = aa_data, aa_ego = ""ego_id"", i_elements = ""from"", j_elements = ""to"")"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in bonacich_igraph(x$igraph, directed = FALSE, bpct = -0.75, message = TRUE) :"
+"2","
+ "
+"2"," (Bonacich power centrality) Isolates detected in network. Isolates will be removed from network when calculating power centrality measure, and will be assigned NA values in final output.
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Isolates detected in network. Isolates will be removed from network when calculating eigenvector centrality measure, and will be assigned NA values in final output.
+
+"
+"2","Warning in eigen_igraph(x$igraph, directed = FALSE, message = TRUE) :"
+"2","
+ "
+"2"," (Eigenvector centrality) Network consists of 2+ unconnected components. Eigenvector centrality scores will be calculated for nodes based on their position within their respective components.
+
+"
+"0","plot(res$igraph_objects[[1]]$igraph_ego)"

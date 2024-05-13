@@ -1,0 +1,4 @@
+"0","alter_data <- gss %>% "
+"0","  select(ego_id, matches(""[a-z][0-9]$"")) # selecting columns that end with a letter and a number."
+"0",""
+"0","alter_data"

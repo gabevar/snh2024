@@ -1,0 +1,10 @@
+"0","alter_data_fact <- alter_data %>% "
+"0","  group_by(ego_id) %>% "
+"0","  select(where(is.factor)) %>% # note the change to factor"
+"0","  pivot_longer(-ego_id) %>%"
+"0","  separate(name, into = c(""name"", ""alter_id""), sep = -1) %>% "
+"0","  pivot_wider(names_from = ""name"", values_from = ""value"") %>% "
+"0","  mutate(alter_id = as.numeric(alter_id)) # cleanup"
+"1","[38;5;252mAdding missing grouping variables: `ego_id`[39m
+"
+"0","alter_data <- alter_data_int %>% left_join(alter_data_fact, by = c(""ego_id"", ""alter_id""))"

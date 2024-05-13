@@ -1,0 +1,10 @@
+"0","```r
+library(viridis)
+library(colourvalues)
+
+V(net)$color <- colour_values(V(net)$adoption, palette = \"heat_hcl\")
+
+plot(net, vertex.label = V(net)$name, vertex.color = V(net)$color)
+
+colour_palettes()
+```"

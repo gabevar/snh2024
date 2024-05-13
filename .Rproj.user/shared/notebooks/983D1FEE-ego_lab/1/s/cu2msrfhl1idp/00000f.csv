@@ -1,0 +1,10 @@
+"0","t <- igraph::distances(net) # get distances between all nodes to all nodes
+t[is.infinite(t)] <- 0 # remove impossible paths
+t <- t > 0 # binarize
+diag(t) <- NA
+1 - mean(t, na.rm = TRUE) # mean distance
+"
+"1","[1]"
+"1"," 0"
+"1","
+"

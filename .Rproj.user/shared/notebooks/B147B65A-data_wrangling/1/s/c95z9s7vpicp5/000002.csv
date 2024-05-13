@@ -1,0 +1,16 @@
+"0","```r
+node_ids <- edgelist %>% select(from, to) %>% unlist() %>% unique()
+
+setdiff(node_ids, nodelist$id)
+
+node_ids <- tibble(id = node_ids)
+
+nodelist <- nodelist %>% full_join(node_ids)
+
+net <- graph_from_data_frame(edgelist, directed = T, vertices = nodelist)
+
+V(net)$name
+V(net)$adoption
+
+plot(net, vertex.label = V(net)$name)
+```"

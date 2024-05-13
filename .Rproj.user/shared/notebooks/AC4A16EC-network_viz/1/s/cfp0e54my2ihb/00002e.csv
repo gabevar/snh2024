@@ -1,0 +1,27 @@
+"0","edges_tech <- ideanet::hightech %>% filter(layer == 3)"
+"0","net_tech <- graph_from_data_frame(edges, directed = T)"
+"0",""
+"0","ggraph(net_tech, layout = ""dendrogram"", direction = ""in"") +"
+"0","  geom_node_label(aes(label = name), repel = F) +"
+"0","  geom_edge_diagonal(arrow = arrow(angle = 30, length = unit(0.05, ""inches""), ends = ""last"", type = ""closed""), alpha = 0.3) +"
+"0","  theme_graph()"
+"1","[38;5;252mMultiple parents. Unfolding graph[39m
+"
+"1","[38;5;252mMultiple roots in graph. Choosing the first[39m
+"
+"1","[38;5;252mMultiple parents. Unfolding graph[39m
+"
+"1","[38;5;252mMultiple roots in graph. Choosing the first[39m
+"
+"1","[38;5;252mMultiple parents. Unfolding graph[39m
+"
+"1","[38;5;252mMultiple roots in graph. Choosing the first[39m
+"
+"1","[38;5;252mMultiple parents. Unfolding graph[39m
+"
+"1","[38;5;252mMultiple roots in graph. Choosing the first[39m
+"
+"1","[38;5;252mMultiple parents. Unfolding graph[39m
+"
+"1","[38;5;252mMultiple roots in graph. Choosing the first[39m
+"

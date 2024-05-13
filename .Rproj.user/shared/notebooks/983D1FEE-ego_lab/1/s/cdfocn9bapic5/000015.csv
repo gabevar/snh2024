@@ -1,0 +1,5 @@
+"0","net <- igraph::add_vertices(net, 1) # adding an extra node"
+"0","net <- add_edges(net, c(rbind(seq(gorder(net) - 1), gorder(net)))) # adding edges to each other node in the network"
+"0","V(net)$name[is.na(V(net)$name)] <- ""ego"" # calling it ""ego"""
+"0",""
+"0","plot(net)"

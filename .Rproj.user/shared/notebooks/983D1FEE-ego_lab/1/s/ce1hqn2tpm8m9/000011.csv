@@ -1,0 +1,6 @@
+"0","egor_df <- egor(egos = ego_data,"
+"0","                alters = alter_data, "
+"0","                aaties = aa_data,"
+"0","                ID.vars = list(ego = ""ego_id"", alter = ""alter_id"", source = ""from"", target = ""to""))"
+"0",""
+"0","plot(egor_df)"

@@ -1,0 +1,8 @@
+"0","ego_dat <- data.frame(ego_id = res$egos$ego_id, ego_val = res$egos$relig)"
+"0","alter_dat <- data.frame(ego_id = res$alters$ego_id, alter_val = res$alters$relig)"
+"0","var_df <- dplyr::left_join(ego_dat, alter_dat, by = ""ego_id"")"
+"0",""
+"0","var_df %>% "
+"0","  group_by(ego_id) %>% "
+"0","  summarize(same_relig = sum(as.character(alter_val) == as.character(ego_val), na.rm = T),"
+"0","            prop_same_relig = same_relig/n())"

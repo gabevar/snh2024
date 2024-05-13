@@ -1,0 +1,7 @@
+"0","```r
+edgelist <- edgelist %>% 
+  mutate(to = str_remove(to, \"tie_\"),
+         to = as.numeric(to))
+
+edgelist
+```"

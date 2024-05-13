@@ -1,0 +1,6 @@
+"0","ggraph(net, layout = ""kk"") +"
+"0","  geom_node_point(aes(color = as.factor(grade), shape = sex, size = V(net)$in_degree)) +"
+"0","  geom_edge_link(arrow = arrow(angle = 30, length = unit(0.05, ""inches""), ends = ""last"", type = ""closed""), alpha = 0.3) +"
+"0","  theme_graph() +"
+"0","  scale_color_manual(name = ""grade"", values = RColorBrewer::brewer.pal(6, ""Set2"")) +"
+"0","  guides(size = ""none"")"

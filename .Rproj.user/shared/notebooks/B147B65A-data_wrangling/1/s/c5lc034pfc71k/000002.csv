@@ -1,0 +1,14 @@
+"0","```r
+edgelist %>% 
+  pivot_longer(c(tie_1, tie_2, tie_3, tie_4, tie_5, tie_6, tie_7, tie_8, tie_9, tie_10, tie_11, tie_12,
+                 tie_13, tie_14, tie_15, tie_16, tie_17, tie_18, tie_19))
+
+edgelist %>% 
+  pivot_longer(tie_1:tie_19)
+
+edgelist %>% 
+  pivot_longer(starts_with(\"tie_\"))
+
+edgelist <- edgelist %>% 
+  pivot_longer(-id)
+```"
